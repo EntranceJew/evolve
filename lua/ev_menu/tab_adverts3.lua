@@ -223,7 +223,7 @@ function TAB:Initialize( pnl )
 		adverts[id] = nil
 		self:Update()
 	end
-	timer.Simple(1.5, function() TAB:Request() end)	
+	timer.Simple(5, function() self:Request() end)
 end
 
 function TAB:Update()

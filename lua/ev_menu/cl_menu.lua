@@ -104,12 +104,13 @@ function MENU:Show()
 	if ( !LocalPlayer():EV_HasPrivilege( "Menu" ) ) then return end
 	if ( !self.Panel ) then MENU:Initialize() end
 	
+  --@TODO: Put a hook here to only draw the current tab.
 	for _, tab in ipairs( MENU.Tabs ) do
 		if tab.Update then tab:Update() end
 	end
 	
 	self.Panel:SetVisible( true )
-	self.Panel:SetKeyboardInputEnabled( false )
+	self.Panel:SetKeyboardInputEnabled( false )--@DEV: magic fix
 	self.Panel:SetMouseInputEnabled( true )
 	
 	input.SetCursorPos( 50 + self.Panel:GetWide() / 2, ScrH() / 2 )
@@ -126,7 +127,7 @@ end
 function MENU:Hide()
 	if ( !self.Panel ) then return end
 	
-	self.Panel:SetKeyboardInputEnabled( false )
+	self.Panel:SetKeyboardInputEnabled( false )--@DEV: this belongs here
 	self.Panel:SetMouseInputEnabled( false )
 	
 	timer.Create( "EV_MenuShow", 1/60, 0, function()

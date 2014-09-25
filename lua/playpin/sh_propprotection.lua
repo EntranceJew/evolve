@@ -1,3 +1,4 @@
+if true then return end
 local PLUGIN = {}
 PLUGIN.Title = "Prop Protection";
 PLUGIN.Description = "A Plugin to prevent minges from spawning blacklisted props and touching others props";
